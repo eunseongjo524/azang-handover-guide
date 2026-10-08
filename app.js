@@ -141,9 +141,7 @@ const dialogCaption = document.querySelector("#dialog-caption");
 let currentView = { screen: "home" };
 
 const mediaMarkup = (media = []) => {
-  if (!media.length) {
-    return `<div class="media-placeholder"><span>＋</span><strong>사진·도식 추가 예정</strong><small>GUIDE_DATA의 media에 경로를 넣어주세요.</small></div>`;
-  }
+  if (!media.length) return "";
   return media.map(item => `
     <figure class="media-figure">
       <button type="button" data-open-image="${item.src}" data-caption="${item.caption || ""}">
@@ -205,7 +203,12 @@ function render() {
           <article class="info-card notice"><h2>안내</h2><p>${category.note}</p></article>
           ${(category.blocks || []).map(block => `<article class="info-card guide-block"><h2>${block.title}</h2><ul>${block.items.map(item => `<li>${item}</li>`).join("")}</ul></article>`).join("")}
           ${category.recipes?.length ? `<section class="recipe-list" aria-label="메뉴별 조리 레시피">${recipeMarkup(category.recipes)}</section>` : ""}
-          <article class="info-card"><h2>사진·위치 도식</h2><div class="media-grid">${mediaMarkup(category.media)}</div></article>
+        ${category.media?.length ? `
+  <article class="info-card media-card">
+    <h2>사진·위치 도식</h2>
+    <div class="media-grid">${mediaMarkup(category.media)}</div>
+  </article>
+` : ""}
         </div>
         <button class="home-link" type="button" data-go-home>처음으로</button>
       </section>`;
