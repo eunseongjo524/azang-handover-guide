@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173b36" />
+    <title>직원 인수인계 안내</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#app">본문으로 건너뛰기</a>
+    <main id="app" class="app-shell" tabindex="-1"></main>
+    <dialog class="image-dialog" id="image-dialog" aria-labelledby="image-dialog-title">
+      <div class="dialog-topbar">
+        <p id="image-dialog-title">이미지 크게 보기</p>
+        <button class="icon-button" type="button" data-close-dialog aria-label="닫기">×</button>
+      </div>
+      <img id="dialog-image" alt="" />
+      <p id="dialog-caption" class="dialog-caption"></p>
+    </dialog>
+    <script src="./app.js"></script>
+  </body>
+</html>
